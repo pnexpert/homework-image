@@ -43,11 +43,16 @@ gcloud compute images create gitlab-template-pnhandson \
 1. 進入Cloud Storage -> 瀏覽器
 2. 建立值區
 為值區命名 : `<project_id>-tf-backend-pnhandson`
->選取資料的儲存位置 : 
-[ ✓ ] Region -> asia-east1 (台灣)
-為資料選擇預設儲存空間級別 : Stardard
-選取如何控制物件的存取權 : 統一
-進階設定 (選用) : Google 代管的加密金鑰
+
+選取資料的儲存位置 : 
+
+- [ ✓ ] Region -> asia-east1 (台灣)
+
+- 為資料選擇預設儲存空間級別 : Stardard
+
+- 選取如何控制物件的存取權 : 統一
+
+- 進階設定 (選用) : Google 代管的加密金鑰
 
 3.重複前兩步驟 
 再建立一個值區 : `<project_id>-cicd-workshop-pnhandson`
@@ -61,12 +66,12 @@ gcloud compute images create gitlab-template-pnhandson \
 
 1. 至防火牆頁面 -> 建立防火牆規則
 
-名稱 : `gitlab-pnhandson`
->目標 : 網路中的所有執行個體
-來源篩選器 : IP範圍
-來源IP範圍 : 您的對外IP
-通訊協定和埠 : 指定的通訊協定和埠
-[ ✓ ] tcp: 80,443,9090,3389
+- 名稱 : `gitlab-pnhandson`
+- 目標 : 網路中的所有執行個體
+- 來源篩選器 : IP範圍
+- 來源IP範圍 : 您的對外IP
+- 通訊協定和埠 : 指定的通訊協定和埠
+- [ ✓ ] tcp: 80,443,9090,3389
 
 2. 建立
 
@@ -131,14 +136,14 @@ gcloud compute addresses delete address-name --region=asia-east1-b
 
 選擇`gitlab-template-pnhandson`
   
->從映像檔建立虛擬機器
-名稱: gitlab-pnhandson
-區域: asia-east1 (台灣) / asia-east1-b
-規格:N2 / n2-standard-4 (4個 vCPU ， 16 GB記憶體)
+- 從映像檔建立虛擬機器
+- 名稱: gitlab-pnhandson
+- 區域: asia-east1 (台灣) / asia-east1-b
+- 規格:N2 / n2-standard-4 (4個 vCPU ， 16 GB記憶體)
 
 2. 選取網路 -> 網路標記
 
->設定剛剛的rule 
+- 設定剛剛的rule 
 `gitlab-pnhandson`
 
 3. 建立
