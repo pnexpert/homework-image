@@ -144,14 +144,16 @@ gcloud compute addresses delete address-name --region=asia-east1-b
 
 2. 選取網路 -> 網路標記
 
-- 設定剛剛的rule 
-`gitlab-firewall-pnhandson`
+- 設定剛剛的rule網路標記
+`gitlab-pnhandson`
 
 3. 建立
 
 ![gce01.png](images/gce01.png)
 ![gce02.png](images/gce02.png)
 ![gce03.png](images/gce03.png)
+
+- 等待約略五分鐘後所有服務皆啟用完成
 
 4. 建立後會自動產生兩組URL
 
