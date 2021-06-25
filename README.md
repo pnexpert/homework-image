@@ -66,10 +66,11 @@ gcloud compute images create gitlab-template-pnhandson \
 
 1. 至防火牆頁面 -> 建立防火牆規則
 
-- 名稱 : `gitlab-pnhandson`
-- 目標 : 網路中的所有執行個體
+- 名稱 : `gitlab-firewall-pnhandson`
+- 目標 : 指定的目標標記
+- 目標標記 : `gitlab-pnhandson`
 - 來源篩選器 : IP範圍
-- 來源IP範圍 : 您的對外IP
+- 來源IP範圍 : 您的對外IP , [可使用myipcheck](https://myip.com.tw/)
 - 通訊協定和埠 : 指定的通訊協定和埠
 - [ ✓ ] tcp: 80,443,9090,3389
 
@@ -137,14 +138,14 @@ gcloud compute addresses delete address-name --region=asia-east1-b
 選擇`gitlab-template-pnhandson`
   
 - 從映像檔建立虛擬機器
-- 名稱: gitlab-pnhandson
+- 名稱: `gitlab-pnhandson`
 - 區域: asia-east1 (台灣) / asia-east1-b
 - 規格:N2 / n2-standard-4 (4個 vCPU ， 16 GB記憶體)
 
 2. 選取網路 -> 網路標記
 
 - 設定剛剛的rule 
-`gitlab-pnhandson`
+`gitlab-firewall-pnhandson`
 
 3. 建立
 
@@ -171,13 +172,26 @@ COCKPIT URL: https://cockpit-34-80-72-130.nip.io:9090
 5. 進入GitLab
 
 - 請由GITLAB URL進入Gitlab
-Login帳密請向貴司管理人員洽詢
+Login帳密
+
+```
+root/ 7QKZfrxBQBip5D4
+```
+
+```
+maintainer：maintainer_user / #rtyhnbvfg
+developer：developer_user / @rtyhnbvfg
+```
 
 ![gitlab.png](images/gitlab.png)
 
 ### Gitlab Troubleshooting
 
-- 如碰到任何異常，需要查詢Runner狀態可由COCKPIT URL進入管理介面
-Login帳密請向貴司管理人員洽詢
+- 如碰到任何異常，需要查詢Windows Runner狀態可由COCKPIT URL進入管理介面
+Login帳密
+
+```
+root / 12qw#$ER
+```
 
 ![cockpit.png](images/cockpit.png)
