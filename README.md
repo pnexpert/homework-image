@@ -116,7 +116,7 @@ gcloud compute networks delete network-name
 
 - GCS
 ```
-gsutil ls | grep pn-handson
+gsutil ls | grep pnhandson
 gsutil -m rm -r gs://bucket_name/
 ```
 
