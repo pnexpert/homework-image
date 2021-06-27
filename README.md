@@ -80,6 +80,33 @@ gcloud compute images create gitlab-template-pnhandson \
 ![firewall02.png](images/firewall02.png)
 ![firewall03.png](images/firewall03.png)
 
+---
+
+## 建立Service Account
+
+請至`API和服務` -> `憑證` -> `建立憑證` -> `服務帳戶` 建立
+
+1. service account name 使用`svracct-pnhandson`
+
+2. 此service account需要的權限:
+- Compute Netwrok Admin
+- Compute Admin
+- Storage Object Admin
+- Service Account User
+
+3. 產生 credential json
+4. 產生跟下載 credential json
+5. 下載 credential json
+6. credential json 內容 sample
+
+![acct01.png](images/acct01.png)
+![acct02.png](images/acct02.png)
+![acct03.png](images/acct03.png)
+![acct04.png](images/acct04.png)
+![acct05.png](images/acct05.png)
+![acct06.png](images/acct06.png)
+
+---
 
 ## 清除本次Hands-on所建立之資源
 
@@ -91,42 +118,85 @@ gcloud compute images create gitlab-template-pnhandson \
 
 - GCE image
 ```
+# 查詢
 gcloud compute images list | grep pnhandson
+
+# 清除指令
 gcloud compute images delete imagename
+
+例 :
+gcloud compute images delete gitlab-template-pnhandson
 ```
 
 - GCE instance
 
 ```
+# 查詢
 gcloud compute instances list | grep pnhandson
+
+# 清除指令
 gcloud compute instances delete instance-name --zone=asia-east1-b
+
+
+gcloud compute instances delete gitlab-pnhandson --zone=asia-east1-b
 ```
 
 - Network firewall (可以一次刪除多組)
 ```
+# 查詢
 gcloud compute firewall-rules list | grep pnhandson
+
+# 清除指令
 gcloud compute firewall-rules delete name name2
+
+例：
+gcloud compute firewall-rules delete gitlab-firewall-pnhandson production-gitlab-deploy-firewall-pnhandson production-iis-rdp-firewall-pnhandson production-iis-web-firewall-pnhandson uat-gitlab-deploy-firewall-pnhandson uat-iis-rdp-firewall-pnhandson uat-iis-web-firewall-pnhandson
 ```
 
 - Vpc network (可以一次刪除多組)
 ```
+# 查詢   
 gcloud compute networks list | grep pnhandson
+
+# 清除指令
 gcloud compute networks delete network-name
+
+例：
+gcloud compute networks delete production-iacvpc-pnhandson uat-iacvpc-pnhandson
 ```
 
 - GCS
 ```
+# 查詢
 gsutil ls | grep pnhandson
+
+# 清除指令
 gsutil -m rm -r gs://bucket_name/
+
+例：
+gsutil -m rm -r gs://pentitum-sre-tf-backend-pnhandson/
 ```
 
 - Static ip  (可以一次刪除多組)
 ```
+# 查詢
 gcloud compute addresses list | grep pnhandson
+
+# 清除指令
 gcloud compute addresses delete address-name --region=asia-east1-b
+
+例：
+gcloud compute addresses delete production-iis-ip-pnhandson uat-iis-ip-pnhandson --region=asia-east1-b
 ```
 
+- Service Account
+```
+# 查詢
+gcloud iam service-accounts list | grep pnhandson
 
+# 清除指令
+gcloud iam service-accounts delete my-iam-account@my-project.iam.gserviceaccount.com
+```
 
 
 ---
