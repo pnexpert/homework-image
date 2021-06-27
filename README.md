@@ -41,8 +41,7 @@ gcloud compute images create gitlab-template-pnhandson \
 ### 建立Bucket
 
 1. 進入Cloud Storage -> 瀏覽器
-2. 建立值區
-為值區命名 : `<project_id>-tf-backend-pnhandson`
+2. 建立存放 terraform state 的值區 為值區命名 : `<project_id>-tf-backend-pnhandson`
 
 選取資料的儲存位置 : 
 
@@ -55,7 +54,7 @@ gcloud compute images create gitlab-template-pnhandson \
 - 進階設定 (選用) : Google 代管的加密金鑰
 
 3.重複前兩步驟 
-再建立一個值區 : `<project_id>-cicd-workshop-pnhandson`
+再建立一個值區存放gitlab artifacts : `<project_id>-cicd-workshop-pnhandson`
 
 ![gcs01.png](images/gcs01.png)
 ![gcs02.png](images/gcs02.png)
