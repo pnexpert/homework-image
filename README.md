@@ -16,7 +16,7 @@
 
 ```
 gcloud compute images create iis-workshop-template-pnhandson \
-    --source-uri gs://[sourceBucket]/[sourceFile].tar.gz \
+    --source-uri gs://[sourceBucket]/iis-template-pnhandson.tar.gz \
     --guest-os-features=MULTI_IP_SUBNET,UEFI_COMPATIBLE,VIRTIO_SCSI_MULTIQUEUE,WINDOWS \
     --licenses "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc" \
     --storage-location=asia-east1
@@ -26,7 +26,7 @@ gcloud compute images create iis-workshop-template-pnhandson \
 
 ```
 gcloud compute images create gitlab-template-pnhandson \
-    --source-uri gs://[sourceBucket]/[sourceFile].tar.gz \
+    --source-uri gs://[sourceBucket]/gitlab-template-pnhandson.tar.gz \
     --licenses "https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx" \
     --storage-location=asia-east1
 ```
