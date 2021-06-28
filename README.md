@@ -16,7 +16,7 @@ Cloud Shell 放置到timeout不會影響匯入
 gcloud compute images create iis-workshop-template-pnhandson \
     --source-uri gs://[sourceBucket]/[sourceFile].tar.gz \
     --guest-os-features=MULTI_IP_SUBNET,UEFI_COMPATIBLE,VIRTIO_SCSI_MULTIQUEUE,WINDOWS \
-    --licenses "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc"
+    --licenses "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-2019-dc" \
     --storage-location=asia-east1
 ```    
 
