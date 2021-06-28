@@ -244,7 +244,7 @@ gcloud compute instances delete gitlab-pnhandson --zone=asia-east1-b
 gcloud compute firewall-rules list | grep pnhandson
 
 # 清除指令
-gcloud compute firewall-rules delete [name] [name2]
+gcloud compute firewall-rules delete [name1] [name2] ...
 
 例：
 gcloud compute firewall-rules delete gitlab-firewall-pnhandson production-gitlab-deploy-firewall-pnhandson production-iis-rdp-firewall-pnhandson production-iis-web-firewall-pnhandson uat-gitlab-deploy-firewall-pnhandson uat-iis-rdp-firewall-pnhandson uat-iis-web-firewall-pnhandson
@@ -258,7 +258,7 @@ gcloud compute firewall-rules delete gitlab-firewall-pnhandson production-gitlab
 gcloud compute networks list | grep pnhandson
 
 # 清除指令
-gcloud compute networks delete network-name
+gcloud compute networks delete [network-name1] [network-name2] ...
 
 例：
 gcloud compute networks delete production-iacvpc-pnhandson uat-iacvpc-pnhandson
@@ -272,7 +272,7 @@ gcloud compute networks delete production-iacvpc-pnhandson uat-iacvpc-pnhandson
 gsutil ls | grep pnhandson
 
 # 清除指令
-gsutil -m rm -r gs://bucket_name/
+gsutil -m rm -r gs://[bucket_name]/
 
 例：
 gsutil -m rm -r gs://pentitum-sre-tf-backend-pnhandson/
@@ -286,7 +286,7 @@ gsutil -m rm -r gs://pentitum-sre-tf-backend-pnhandson/
 gcloud compute addresses list | grep pnhandson
 
 # 清除指令
-gcloud compute addresses delete address-name --region=asia-east1
+gcloud compute addresses delete [address-name1] [address-name2] ... --region=asia-east1
 
 例：
 gcloud compute addresses delete production-iis-ip-pnhandson uat-iis-ip-pnhandson --region=asia-east1
@@ -300,7 +300,7 @@ gcloud compute addresses delete production-iis-ip-pnhandson uat-iis-ip-pnhandson
 gcloud iam service-accounts list | grep pnhandson
 
 # 清除指令
-gcloud iam service-accounts delete my-iam-account@my-project.iam.gserviceaccount.com
+gcloud iam service-accounts delete [my-iam-account@my-project].iam.gserviceaccount.com
 ```
 ![clear_serviceaccount.png](images/clear_serviceaccount.png)
 
