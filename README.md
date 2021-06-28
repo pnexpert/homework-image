@@ -114,6 +114,94 @@ gcloud compute images create gitlab-template-pnhandson \
 
 ---
 
+## GitLab建立
+
+1. 使用已經匯入完成的image 
+
+選擇`gitlab-template-pnhandson`
+  
+- 從[映像檔](https://console.cloud.google.com/compute/images)建立虛擬機器
+- 名稱: `gitlab-pnhandson`
+- 區域: asia-east1 (台灣) / asia-east1-b
+- 規格:N2 / n2-standard-4 (4個 vCPU ， 16 GB記憶體)
+
+2. 選取網路 -> 網路標記
+
+- 設定剛剛的rule網路標記
+`gitlab-pnhandson`
+
+3. 建立
+
+![gce01.png](images/gce01.png)
+![gce02.png](images/gce02.png)
+![gce03.png](images/gce03.png)
+
+- 等待約略五分鐘後所有服務皆啟用完成
+
+4. 建立後會自動產生兩組URL
+
+格式為:
+
+```
+GITLAB URL: https://gitlab-您的IP.nip.io
+COCKPIT URL: https://cockpit-您的IP.nip.io:9090
+```
+
+- 在`您的 IP `部分`請將 . 換成 - ` , 如範例所示
+
+例:
+
+```
+GITLAB URL: https://gitlab-34-80-72-130.nip.io
+COCKPIT URL: https://cockpit-34-80-72-130.nip.io:9090
+```
+
+- 如果需要確認是否成功啟動所有服務請由Console的SSH進入此instance, 並使用指令查看
+
+指令
+
+```
+sudo service-status
+```
+
+如果出現如下列資訊則為服務啟用成功,如否,請持續等待服務啟用完畢
+
+```
+Service Infomation:
+COCKPIT URL: https://cockpit-35-201-185-33.nip.io:9090
+GITLAB URL: https://gitlab-35-201-185-33.nip.io
+Windows Server RDP IP: 35.201.185.33 Port: 3389, Account: Administrator
+```
+
+5. 進入GitLab
+
+- 請由GITLAB URL進入Gitlab
+Login帳密
+
+```
+root/ 7QKZfrxBQBip5D4
+```
+
+```
+maintainer：maintainer_user / #rtyhnbvfg
+developer：developer_user / @rtyhnbvfg
+```
+
+![gitlab.png](images/gitlab.png)
+
+### Gitlab Troubleshooting
+
+- 如碰到任何異常，需要查詢Windows Runner狀態可由COCKPIT URL進入管理介面
+Login帳密
+
+```
+root / 12qw#$ER
+```
+
+![cockpit.png](images/cockpit.png)
+
+---
+
 ## 清除本次Hands-on所建立之資源
 
 ### 注意事項
@@ -216,90 +304,3 @@ gcloud iam service-accounts delete my-iam-account@my-project.iam.gserviceaccount
 ```
 ![clear_serviceaccount.png](images/clear_serviceaccount.png)
 
----
-
-## GitLab建立
-
-1. 使用已經匯入完成的image 
-
-選擇`gitlab-template-pnhandson`
-  
-- 從[映像檔](https://console.cloud.google.com/compute/images)建立虛擬機器
-- 名稱: `gitlab-pnhandson`
-- 區域: asia-east1 (台灣) / asia-east1-b
-- 規格:N2 / n2-standard-4 (4個 vCPU ， 16 GB記憶體)
-
-2. 選取網路 -> 網路標記
-
-- 設定剛剛的rule網路標記
-`gitlab-pnhandson`
-
-3. 建立
-
-![gce01.png](images/gce01.png)
-![gce02.png](images/gce02.png)
-![gce03.png](images/gce03.png)
-
-- 等待約略五分鐘後所有服務皆啟用完成
-
-4. 建立後會自動產生兩組URL
-
-格式為:
-
-```
-GITLAB URL: https://gitlab-您的IP.nip.io
-COCKPIT URL: https://cockpit-您的IP.nip.io:9090
-```
-
-- 在`您的 IP `部分`請將 . 換成 - ` , 如範例所示
-
-例:
-
-```
-GITLAB URL: https://gitlab-34-80-72-130.nip.io
-COCKPIT URL: https://cockpit-34-80-72-130.nip.io:9090
-```
-
-- 如果需要確認是否成功啟動所有服務請由Console的SSH進入此instance, 並使用指令查看
-
-指令
-
-```
-sudo service-status
-```
-
-如果出現如下列資訊則為服務啟用成功,如否,請持續等待服務啟用完畢
-
-```
-Service Infomation:
-COCKPIT URL: https://cockpit-35-201-185-33.nip.io:9090
-GITLAB URL: https://gitlab-35-201-185-33.nip.io
-Windows Server RDP IP: 35.201.185.33 Port: 3389, Account: Administrator
-```
-
-5. 進入GitLab
-
-- 請由GITLAB URL進入Gitlab
-Login帳密
-
-```
-root/ 7QKZfrxBQBip5D4
-```
-
-```
-maintainer：maintainer_user / #rtyhnbvfg
-developer：developer_user / @rtyhnbvfg
-```
-
-![gitlab.png](images/gitlab.png)
-
-### Gitlab Troubleshooting
-
-- 如碰到任何異常，需要查詢Windows Runner狀態可由COCKPIT URL進入管理介面
-Login帳密
-
-```
-root / 12qw#$ER
-```
-
-![cockpit.png](images/cockpit.png)
