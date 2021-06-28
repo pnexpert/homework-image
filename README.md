@@ -238,7 +238,7 @@ GITLAB URL: https://gitlab-您的IP.nip.io
 COCKPIT URL: https://cockpit-您的IP.nip.io:9090
 ```
 
-- 您的 IP 部分`請將 . 換成 - 喔 ,如範例`
+- 在`您的 IP `部分`請將 . 換成 - ` , 如範例所示
 
 例:
 
