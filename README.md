@@ -4,11 +4,13 @@
 
 開啟Cloud Shell 使用以下指令匯入此次hands-on所需要的image
 
-- 執行後約需等待30分鐘左右
+注意事項 :
 
-Cloud Shell 放置到timeout不會影響匯入
+- 執行後約需等待30~60分鐘左右
 
-可至映像檔頁面查看是否匯入完成
+- Cloud Shell 放置到timeout不會影響匯入
+
+- 可至[映像檔](https://console.cloud.google.com/compute/images)頁面查看是否匯入完成
 
 ### IIS image
 
@@ -29,6 +31,9 @@ gcloud compute images create gitlab-template-pnhandson \
     --storage-location=asia-east1
 ```
 
+![imagecreate.png](images/imagecreate.png)
+
+
 ---
 
 ## 建立GCS Bucket
@@ -40,7 +45,7 @@ gcloud compute images create gitlab-template-pnhandson \
 
 ### 建立Bucket
 
-1. 進入Cloud Storage -> 瀏覽器
+1. 進入[Cloud Storage](https://console.cloud.google.com/storage/browser) -> 瀏覽器
 2. 建立存放 terraform state 的值區 為值區命名 : `<project_id>-tf-backend-pnhandson`
 
 選取資料的儲存位置 : 
@@ -63,7 +68,7 @@ gcloud compute images create gitlab-template-pnhandson \
 
 ## 建立防火牆規則
 
-1. 至防火牆頁面 -> 建立防火牆規則
+1. 至[防火牆](https://console.cloud.google.com/networking/firewalls)頁面 -> 建立防火牆規則
 
 - 名稱 : `gitlab-firewall-pnhandson`
 - 目標 : 指定的目標標記
@@ -83,7 +88,7 @@ gcloud compute images create gitlab-template-pnhandson \
 
 ## 建立Service Account
 
-請至`API和服務` -> `憑證` -> `建立憑證` -> `服務帳戶` 建立
+請至[API和服務](https://console.cloud.google.com/apis/credentials) -> `憑證` -> `建立憑證` -> `服務帳戶` 建立
 
 1. service account name 使用`svracct-pnhandson`
 
@@ -206,7 +211,7 @@ gcloud iam service-accounts delete my-iam-account@my-project.iam.gserviceaccount
 
 選擇`gitlab-template-pnhandson`
   
-- 從映像檔建立虛擬機器
+- 從[映像檔](https://console.cloud.google.com/compute/images)建立虛擬機器
 - 名稱: `gitlab-pnhandson`
 - 區域: asia-east1 (台灣) / asia-east1-b
 - 規格:N2 / n2-standard-4 (4個 vCPU ， 16 GB記憶體)
@@ -233,11 +238,30 @@ GITLAB URL: https://gitlab-您的IP.nip.io
 COCKPIT URL: https://cockpit-您的IP.nip.io:9090
 ```
 
+- 您的 IP 部分`請將 . 換成 - 喔 ,如範例`
+
 例:
 
 ```
 GITLAB URL: https://gitlab-34-80-72-130.nip.io
 COCKPIT URL: https://cockpit-34-80-72-130.nip.io:9090
+```
+
+- 如果需要確認是否成功啟動所有服務請由Console的SSH進入此instance, 並使用指令查看
+
+指令
+
+```
+sudo service-status
+```
+
+如果出現如下列資訊則為服務啟用成功,如否,請持續等待服務啟用完畢
+
+```
+Service Infomation:
+COCKPIT URL: https://cockpit-35-201-185-33.nip.io:9090
+GITLAB URL: https://gitlab-35-201-185-33.nip.io
+Windows Server RDP IP: 35.201.185.33 Port: 3389, Account: Administrator
 ```
 
 5. 進入GitLab
