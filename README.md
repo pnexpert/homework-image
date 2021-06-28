@@ -300,7 +300,7 @@ gcloud compute addresses delete production-iis-ip-pnhandson uat-iis-ip-pnhandson
 gcloud iam service-accounts list | grep pnhandson
 
 # 清除指令
-gcloud iam service-accounts delete [my-iam-account@my-project].iam.gserviceaccount.com
+gcloud iam service-accounts delete [my-iam-account@my-project.iam.gserviceaccount.com]
 ```
 ![clear_serviceaccount.png](images/clear_serviceaccount.png)
 
