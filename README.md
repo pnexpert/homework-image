@@ -88,7 +88,7 @@ gcloud compute images create gitlab-template-pnhandson \
 
 ## 建立Service Account
 
-請至[API和服務](https://console.cloud.google.com/apis/credentials) -> `憑證` -> `建立憑證` -> `服務帳戶` 建立
+請至[Service Account 英文介面](https://console.cloud.google.com/iam-admin/serviceaccounts?hl=en)建立
 
 1. service account name 使用`svracct-pnhandson`
 
